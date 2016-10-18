@@ -1,0 +1,29 @@
+<!-- partials/state1.html -->
+
+<!-- Search feature -->
+
+<div class="form-group">
+    <div class="input-group input-group-md col-sm-8 col-sm-offset-2">
+        <input ng-model="movieTitle" type="text" class="form-control" placeholder="Search for a movie...">
+        <span class="input-group-btn">
+        	<button ng-click="vm.getMovieTitle(movieTitle)" class="btn btn-primary" type="button">Find!</button>
+        </span>
+    </div>
+</div>
+
+<!-- Results return and link to details
+ -->
+
+<div class="col-xs-12 col-sm-6 col-md-4 container-fluid" ng-repeat="title in vm.movieData.data.Search">
+    <div id=panel class="panel panel-info">
+        <div class="panel-heading">{{title.Title}}</div>
+        <div id=body class="panel-body text-center">
+            <div id=poster>
+                <img ng-src="{{title.Poster}}">
+            </div>
+            <br>
+            <div>Released in {{title.Year}}</div>
+            <a ui-sref="state2({imdbID: '{{title.imdbID}}'})">Check out the movie details</a>
+        </div>
+    </div>
+</div>
